@@ -23,14 +23,14 @@ function App() {
     setCountryAndCapitals(combinedSortedArray);
   }, [allCountries]);
   return (
-    <div className="p-20">
+    <div className="md:p-20 p-10 flex flex-col justify-center items-center">
       <SearchCountryCityInput
         label="Search country or city"
         placeholder="Search or input a country or city name"
         countries={countryAndCapitals}
         onTextChange={handleTextChange}
       />
-      <CardDetail title={selectedVal} />
+      {selectedVal && <CardDetail title={selectedVal} />}
     </div>
   );
 }

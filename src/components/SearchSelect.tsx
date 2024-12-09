@@ -67,7 +67,6 @@ export const SearchCountryCityInput = ({
   const initialSearchInput = "";
 
   const [searchInput, setSearchInput] = useState(initialSearchInput);
-  const [selectedOptions, setSelectedOptions] = useState<string>("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [filteredSuggestions, setFilteredSuggestions] =
     useState<string[]>(lcSuggestions);
@@ -80,13 +79,10 @@ export const SearchCountryCityInput = ({
   };
 
   useEffect(() => filterSuggestions(searchInput), [searchInput]);
-  useEffect(() => {
-    onTextChange(selectedOptions.toString());
-  }, [selectedOptions]);
 
   return (
     <div
-      className={`font-poppins w-full mb-3
+      className={`font-poppins md:w-72 w-40 mb-3
         ${minWidth ? "min-w-[267px]" : ""}
         `}
     >
@@ -111,7 +107,6 @@ export const SearchCountryCityInput = ({
             }  border-none transition duration-300 ease-in-out leading-tight focus:outline-none focus:shadow-outline ${"placeholder-black"}`}
             onChange={(e) => {
               setSearchInput(e.target.value.toLowerCase());
-              setSelectedOptions(e.target.value.toLowerCase());
               setDropdownOpen(true);
             }}
             onFocus={() => setDropdownOpen(true)}
@@ -127,8 +122,8 @@ export const SearchCountryCityInput = ({
           countries={filteredSuggestions}
           dropdownOpen={dropdownOpen}
           onOptionSelected={(option: string) => {
-            setSelectedOptions(option.toLowerCase());
             setSearchInput(option.toLowerCase());
+            onTextChange(option.toLowerCase());
             setDropdownOpen(false);
           }}
         />

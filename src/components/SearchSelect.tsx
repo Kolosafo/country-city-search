@@ -34,10 +34,10 @@ const SearchSelect = ({
   return (
     <>
       {dropdownOpen && (
-        <ul className="w-full flex flex-col items-start pop-card z-50 mt-2 no-scroll max-h-[200px] rounded-lg overflow-y-scroll">
+        <ul className="w-full flex flex-col items-start pop-card p-1 z-50 mt-2 no-scroll max-h-[200px] rounded-lg overflow-y-scroll">
           {countries.sort().map((sug, ind) => (
             <li
-              className="capitalize cursor-pointer hover:text-orange-600 font-semibold px-4 py-2"
+              className="capitalize cursor-pointer text-start w-full rounded-lg hover:bg-green-200 font-semibold px-4 py-2"
               key={ind}
               onClick={() => onOptionSelected(sug)}
               onMouseDown={(e) => e.preventDefault()}

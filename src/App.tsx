@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="md:p-20 p-10 flex flex-col justify-center items-center">
       <SearchCountryCityInput
-        label="Search country or city"
-        placeholder="Search or input a country or city name"
+        label="country or city"
+        placeholder="Search country or city"
         countries={countryAndCapitals}
         onTextChange={handleTextChange}
       />

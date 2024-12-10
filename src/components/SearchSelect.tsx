@@ -34,10 +34,10 @@ const SearchSelect = ({
   return (
     <>
       {dropdownOpen && (
-        <ul className="w-full max-h-[140px] rounded-b-[7px] border-x border-b border-solid border-primary-gray xl:rounded-b-xl overflow-y-scroll divide-y">
+        <ul className="w-full flex flex-col items-start pop-card z-50 mt-2 no-scroll max-h-[200px] rounded-lg overflow-y-scroll">
           {countries.sort().map((sug, ind) => (
             <li
-              className="capitalize cursor-pointer hover:text-orange-600 px-7 py-3"
+              className="capitalize cursor-pointer hover:text-orange-600 font-semibold px-4 py-2"
               key={ind}
               onClick={() => onOptionSelected(sug)}
               onMouseDown={(e) => e.preventDefault()}
@@ -82,29 +82,29 @@ export const SearchCountryCityInput = ({
 
   return (
     <div
-      className={`font-poppins md:w-72 w-40 mb-3
+      className={`font-poppins flex flex-col items-start md:w-72 w-56 mb-3
         ${minWidth ? "min-w-[267px]" : ""}
         `}
     >
       {label !== undefined && (
-        <span className="font-normal text-base capitalize">{label}</span>
+        <span className="font-bold required text-base capitalize">{label}</span>
       )}
 
       <>
         <div
-          className={`mt-3 w-full shrink-0 flex flex-row ${
+          className={`mt-1 w-full shrink-0 flex flex-row ${
             dropdownOpen
               ? "rounded-t-[7px] xl:rounded-t-xl"
               : "rounded-[7px] xl:rounded-xl"
-          } shadow appearance-none border border-solid border-primary-gray ${"hover:border-orange-600 hover:shadow-golden hover:placeholder-transparent"}`}
+          } shadow appearance-none border-none ${"hover:border-orange-600 hover:shadow-golden hover:placeholder-transparent"}`}
         >
           <Input
             placeholder={placeholder}
-            className={`capitalize h-16 flex-grow ${
+            className={`capitalize h-12 flex-grow ${
               dropdownOpen
                 ? "rounded-t-[7px] xl:rounded-t-xl"
                 : "rounded-[7px] xl:rounded-xl"
-            }  border-none transition duration-300 ease-in-out leading-tight focus:outline-none focus:shadow-outline ${"placeholder-black"}`}
+            }  border-none transition duration-300 ease-in-out focus:bg-gray-300 leading-tight ${"placeholder-black"}`}
             onChange={(e) => {
               setSearchInput(e.target.value.toLowerCase());
               setDropdownOpen(true);

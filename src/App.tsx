@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { countries } from "countries-list";
 import { SearchCountryCityInput } from "./components/SearchSelect";
-import { CardDetail } from "./components/Card";
 
 function App() {
   const [countryAndCapitals, setCountryAndCapitals] = useState<string[]>([]);
-  const allCountries = Object.values(countries);
   const [selectedVal, setSelectedVal] = useState("");
 
   const handleTextChange = (text: string) => {
     setSelectedVal(text);
   };
   useEffect(() => {
+    const allCountries = Object.values(countries);
     const getCountryNames = allCountries.map((country) => country.name);
     const getCountryCapitals = allCountries.map((country) => country.capital);
     const combinedSortedArray = [
@@ -20,8 +19,12 @@ function App() {
       ...getCountryCapitals,
     ].sort();
 
+    // SET TIMEOUT TO MIMIC API CALL
+
+    // setTimeout(() => {
     setCountryAndCapitals(combinedSortedArray);
-  }, [allCountries]);
+    // }, 5000);
+  }, []);
   return (
     <div className="md:p-20 p-10 flex flex-col justify-center items-center">
       <SearchCountryCityInput
@@ -30,7 +33,6 @@ function App() {
         countries={countryAndCapitals}
         onTextChange={handleTextChange}
       />
-      {selectedVal && <CardDetail title={selectedVal} />}
     </div>
   );
 }

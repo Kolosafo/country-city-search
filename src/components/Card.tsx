@@ -4,7 +4,7 @@ export function CardDetail({ title }: { title: string }) {
   return (
     <Card className="md:w-[350px] w-40 ">
       <CardHeader>
-        <CardTitle className="capitalize">{title}</CardTitle>
+        <CardTitle className="capitalize text-sm">{title}</CardTitle>
       </CardHeader>
     </Card>
   );
